@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->string('title');
             $table->text('description');
             $table->string('level');
-            $table->timestamp('start_at');
-            $table->timestamp('end_at');
+            $table->timestamp('start_at')->nullable();
+            $table->timestamp('end_at')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->foreignId('instructor_id')->nullable()->constrained('users')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
@@ -29,11 +29,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
-        $table->dropForeign(['category_id']);
-        $table->dropForeign(['instructor_id']);
-        
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropForeign(['instructor_id']);
         });
+
         Schema::dropIfExists('courses');
     }
 };

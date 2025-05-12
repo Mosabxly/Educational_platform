@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
-    //
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'title',
         'description',
         'level',
@@ -20,8 +19,6 @@ class Course extends Model
         'instructor_id',
     ];
 
-
-    
     public function instructor() {
         return $this->belongsTo(User::class, 'instructor_id');
     }
@@ -53,5 +50,5 @@ class Course extends Model
     public function payments() {
         return $this->hasMany(Payment::class);
     }
-
+    //
 }

@@ -8,11 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable ,HasApiTokens;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -49,8 +48,9 @@ class User extends Authenticatable
         ];
     }
 
-
-    
+    ///////////////////////////////////////////////////////////////////
+    ///////////////// Relationships ///////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
 
     public function coursesTeach() {
         return $this->hasMany(Course::class, 'instructor_id');
@@ -75,8 +75,4 @@ class User extends Authenticatable
     public function payments() {
         return $this->hasMany(Payment::class, 'student_id');
     }
-
-
-
-
 }

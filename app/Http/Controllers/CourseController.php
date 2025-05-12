@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use app\http\Resources;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -13,6 +13,9 @@ class CourseController extends Controller
     public function index()
     {
         //
+       $courses = Course::with('user')->get(); // Eager load user with each course
+
+        return CourseResource::collection($courses);       
     }
 
     /**
