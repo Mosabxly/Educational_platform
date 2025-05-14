@@ -4,12 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
+use App\Models\Course;
+use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Auth;
 
+
+use Illuminate\Support\Facades\DB;
 class EnrollmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+
+        public function enroll(Course $course)
+    {
+        try {
+            DB::beginTransaction();
+            
+            if ($course->seats <= 0) {
+                throw new \Exception('لا يوجد مقاعد متاحة');
+            }
+            
+            Enrollment::create([
+                'user_id' => auth()->id(),
+                'course_id' => $course->id,
+                'enrolled_at' => now()
+            ]);
+            
+            $course->decrement('seats');
+            
+            DB::commit();
+            
+            return back()->with('success', 'تم التسجيل في الدورة بنجاح');
+            
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'فشل التسجيل: '.$e->getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
     public function index()
     {
         //

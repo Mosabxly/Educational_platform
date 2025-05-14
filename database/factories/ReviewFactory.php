@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\User;
+use App\Models\Course;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Review>
  */
@@ -18,6 +19,8 @@ class ReviewFactory extends Factory
     {
         return [
             //
+              'rating' => $this->faker->numberBetween(1, 5),
+    'comment' => $this->faker->sentence(),
         ];
     }
 }

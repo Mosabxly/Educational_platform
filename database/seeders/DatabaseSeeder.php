@@ -29,9 +29,9 @@ class DatabaseSeeder extends Seeder
         Lesson::factory(10)->create();
         Review::factory(10)->create();
         Quizz::factory(10)->create();
-        QuizResult::factory(10)->create();
-        Certificate::factory(10)->create();
-        Payment::factory(10)->create();
+       // QuizResult::factory(10)->create();
+        //Certificate::factory(10)->create();
+        //Payment::factory(10)->create();
 
         /*User::factory()->create([
             'name' => 'Test User',

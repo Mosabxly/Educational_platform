@@ -16,8 +16,17 @@ class CourseFactory extends Factory
      */
     public function definition(): array
     {
+         $startDate = $this->faker->dateTimeBetween('+1 days', '+1 month');
+        $endDate = (clone $startDate)->modify('+'.rand(7, 30).' days');
+
         return [
-            //
+             'title' => $this->faker->sentence(3),
+            'description' => $this->faker->paragraph(),
+            'level' => $this->faker->randomElement(['مبتدئ', 'متوسط', 'متقدم']),
+            'start_at' => $startDate,
+            'end_at' => $endDate,
+            'category_id' => rand(1, 5), // تأكد أن لديك تصنيفات في قاعدة البيانات بهذه المعرفات
+            'instructor_id' => rand(1, 5), // تأكد أن لديك مدرسين معرفاتهم موجودة
         ];
     }
 }

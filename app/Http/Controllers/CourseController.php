@@ -13,9 +13,9 @@ class CourseController extends Controller
     public function index()
     {
         //
-       $courses = Course::with('user')->get(); // Eager load user with each course
+     //  $courses = Course::with('user')->get(); // Eager load user with each course
 
-        return CourseResource::collection($courses);       
+      //  return CourseResource::collection($courses);       
     }
 
     /**
@@ -61,8 +61,8 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+   /* public function destroy(Course $course)
     {
         //
-    }
+    }*/
 }

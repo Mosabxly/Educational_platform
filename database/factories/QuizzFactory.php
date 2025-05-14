@@ -18,6 +18,8 @@ class QuizzFactory extends Factory
     {
         return [
             //
+            'title'=>fake()->title(),
+
         ];
     }
 }
