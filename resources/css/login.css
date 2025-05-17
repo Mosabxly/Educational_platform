@@ -1,0 +1,53 @@
+/* login.css */
+
+
+form h2 {
+  margin-bottom: 25px;
+  color: #333;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0 20px 0;
+  border: 1.8px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.6);
+}
+
+button {
+  background-color: #667eea;
+  color: white;
+  font-weight: bold;
+  padding: 12px 0;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #5563c1;
+}
+
+p {
+  margin-top: 20px;
+  color: #cc0000;
+  font-weight: 600;
+}
+
+/* رسالة نجاح */
+p.success {
+  color: #28a745;
+}
