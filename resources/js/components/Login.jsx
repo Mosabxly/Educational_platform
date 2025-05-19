@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../../css/login.css";
 
+import { Link } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,7 +47,12 @@ const Login = () => {
           required
         />
 
-        <button type="submit">دخول</button>
+      <Link to="/AdminDashboard.jsx">
+  <button>دخول</button>
+</Link>
+
+  
+
       </form>
 
       {message && <p>{message}</p>}
@@ -54,3 +61,6 @@ const Login = () => {
 };
 
 export default Login;
+ //  <button onClick={() => window.location.href = "/AdminDashboard.jsx"}>دخول</button>
+
+      //   <button type="submit">دخول</button>

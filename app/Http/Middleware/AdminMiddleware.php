@@ -4,24 +4,18 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
-  {
-        $user = Auth::user();
-
-        if ($user && $user->tokenCan('role:admin') && str_ends_with($user->email, '@admin.com')) {
+    public function handle(Request $request, Closure $next)
+    {
+        // تحقق أن المستخدم مسجل الدخول
+        if (Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
         }
 
-        return response()->json(['error' => 'Not authorized as admin'], 403);
+        // إذا لم يكن الأدمن، ارجع 403 أو حوله لصفحة أخرى
+        abort(403, 'Unauthorized');
     }
 }

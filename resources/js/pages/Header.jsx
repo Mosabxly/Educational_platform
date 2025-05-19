@@ -3,6 +3,12 @@ import React from 'react';
 import "../../css/headercss.css";  // استيراد ملف CSS
 //import Login from "./components/Login.jsx";
 import { Link } from "react-router-dom";
+
+
+
+//             يرجي التعلديل
+
+
 export default function Header() {
   return (
     <header className='headercss'>
@@ -14,10 +20,11 @@ export default function Header() {
       </div>
      
       <nav className='navigation'>
-         <a href="/">الرئيسية</a>
-        <a href="/about">عن المنصة</a>
-        <a href="/courses">الدورات</a>
-        <a href="/contact">تواصل معنا</a>
+         <Link to="/">الرئيسية</Link>   
+          <Link to="/about">عن الموقع</Link>   
+        <a href="/courses">كورسات </a>
+        <Link to="/admindashboard">الدورات</Link>   
+        <Link to="/register">تسجيل حساب جديد</Link>   
       </nav>
 
       
